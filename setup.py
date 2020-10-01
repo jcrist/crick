@@ -1,6 +1,9 @@
 import sys
 import os
 
+from setuptools import dist
+dist.Distribution().fetch_build_eggs(['Cython', 'numpy'])
+
 import numpy.distutils.misc_util as np_misc
 from setuptools import setup
 from setuptools.extension import Extension
@@ -68,4 +71,5 @@ setup(name='crick',
       license='BSD',
       packages=['crick', 'crick.tests'],
       ext_modules=cythonize(extensions),
+      setup_requires=['numpy', 'Cython'],
       zip_safe=False)
